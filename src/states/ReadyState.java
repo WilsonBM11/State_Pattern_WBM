@@ -8,12 +8,14 @@ public class ReadyState extends State{
         super(player);
     }
 
+    //Stop the player and change the state to StoppedState
     @Override
-    public String onLock() {
-        player.changeState(new LockedState(player));
+    public String onStop() {
+        player.changeState(new StoppedState(player));
         return "Locked...";
     }
 
+    //Play the track and change the state to PlayingState
     @Override
     public String onPlay() {
         String action = player.startPlayback();
@@ -21,11 +23,13 @@ public class ReadyState extends State{
         return action;
     }
 
+    //OnNext is locked and keep the state
     @Override
     public String onNext() {
         return "Locked...";
     }
 
+    //OnPrevious is locked and keep the state
     @Override
     public String onPrevious() {
         return "Locked...";

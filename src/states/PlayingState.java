@@ -8,24 +8,28 @@ public class PlayingState extends State{
         super(player);
     }
 
+    //Change state to StoppedState, restart the tracks and stop playing
     @Override
-    public String onLock() {
-        player.changeState(new LockedState(player));
+    public String onStop() {
+        player.changeState(new StoppedState(player));
         player.setCurrentTrackAfterStop();
         return "Stop playing";
     }
 
+    //Change state to ReadyState
     @Override
     public String onPlay() {
         player.changeState(new ReadyState(player));
         return "Paused...";
     }
 
+    //Play the next track and keep the state
     @Override
     public String onNext() {
         return player.nextTrack();
     }
 
+    //Play the previous track and keep the state
     @Override
     public String onPrevious() {
         return player.previousTrack();

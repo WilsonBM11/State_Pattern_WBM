@@ -1,3 +1,5 @@
+package ui;
+
 import context.Player;
 
 import javax.swing.*;
@@ -13,7 +15,7 @@ public class UI {
     }
 
     public void init() {
-        JFrame frame = new JFrame("Test player");
+        JFrame frame = new JFrame("Spotify");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel context = new JPanel();
         context.setLayout(new BoxLayout(context, BoxLayout.Y_AXIS));
@@ -28,7 +30,7 @@ public class UI {
         JButton play = new JButton("Play");
         play.addActionListener(e -> textField.setText(player.getState().onPlay()));
         JButton stop = new JButton("Stop");
-        stop.addActionListener(e -> textField.setText(player.getState().onLock()));
+        stop.addActionListener(e -> textField.setText(player.getState().onStop()));
         JButton next = new JButton("Next");
         next.addActionListener(e -> textField.setText(player.getState().onNext()));
         JButton prev = new JButton("Prev");
